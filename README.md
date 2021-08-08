@@ -1,5 +1,5 @@
 # ![alt text](https://raw.githubusercontent.com/logolica99/polico/main/images/logo.jpg)
-API for **polico** , an ecommerce market place for students' second hand products.
+API for **polico** , an ecommerce marketplace for students' second hand products.
 
 ## registration
 
