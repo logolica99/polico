@@ -4,14 +4,23 @@ API for **polico** , an ecommerce market place for students' second hand product
 ## registration
 
 **URL:** `url/user/registration`
-`{
+``` 
+{
     "firstName":,
     "lastName":,
     "username":,
     "password":,
     "email":,
     "phone":,
-    "university":,
-}`
+    "university":
+}
+  ```
 
+## login
 **URL:** `url/user/login`
+```
+{
+    "username":,
+    "password":,
+}
+```
