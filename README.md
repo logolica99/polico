@@ -4,7 +4,7 @@ API for **polico** , an ecommerce market place for students' second hand product
 ## registration
 
 **URL:** `url/user/registration`
-`   {
+`   
     "firstName":,
     "lastName":,
     "username":,
@@ -12,7 +12,7 @@ API for **polico** , an ecommerce market place for students' second hand product
     "email":,
     "phone":,
     "university":,
-    }`
+  `
 
 ## login
 **URL:** `url/user/login`
