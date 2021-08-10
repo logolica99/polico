@@ -10,7 +10,7 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
 {{base_url}}/user/registration
 ```
 
-**Content-Type: apllication/json** \s
+**Content-Type: apllication/json** &nbsp;
 **Body format**
 
 ```
