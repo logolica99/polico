@@ -10,10 +10,9 @@ const authenticateToken = require('../middlewares/authenticateToken');
 const Product = require('../models/product');
 
 
-///////////handling requests
+////////////////////handling requests///////////////////////////
 
 //creating product
-
 
 router.post('/create', authenticateToken, async (req, res) => {
     try {
@@ -59,17 +58,58 @@ router.get('/all', authenticateToken, async (req, res) => {
 
 // getting single product
 
-router.get('/:product_id',authenticateToken,  async (req, res) => {
+router.get('/:product_id', authenticateToken, async (req, res) => {
 
-   
-        Product.find({"_id":req.params.product_id})
-        .then(result=>res.status(200).json(result))
-        .catch(error=>{
+
+    Product.find({ "_id": req.params.product_id })
+        .then(result => res.status(200).json(result))
+        .catch(error => {
             console.log(error);
             res.status(500).send("Failed");
         })
-      
 
+
+})
+
+//getting all the products by the owner
+
+router.get('/user/:user_id', authenticateToken, async (req, res) => {
+
+    Product.find({ "ownerId": req.params.user_id }).sort([['updatedAt', -1]])
+        .then(result => res.status(200).json(result))
+        .catch(error => {
+            console.log(error);
+            res.status(500).send("Failed");
+        });
+})
+
+//updating a product 
+router.put('/update/:product_id', authenticateToken, async (req, res) => {
+
+
+    try {
+
+
+
+        await Product.updateOne({ _id:req.params.product_id}, { $set: req.body });
+        return res.status(201).send("product updated successfully");
+
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).send("Failed");
+    }
+})
+
+//deleting a product
+router.delete('/update/:product_id',authenticateToken,async(req,res)=>{
+    try{
+        await Product.deleteOne({_id:req.params.product_id})
+        return res.status(201).send("product deleted successfully");
+    }catch(error){
+        console.log(error);
+        res.status(500).send("Failed");
+    }
 })
 
 
