@@ -49,7 +49,6 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
 
 ```
   {{base_url}}/products/all
-
 ```
 
 ## gel single product by id 
