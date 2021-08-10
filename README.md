@@ -10,7 +10,7 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
 {{base_url}}/user/registration
 ```
 
-**Content-Type:apllication/json**
+**Content-Type: apllication/json**
 **Body format**
 
 ```
@@ -33,7 +33,7 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
 {{base_url}}/user/login
 ```
 
-**Content-Type:apllication/json**
+**Content-Type: apllication/json**
 **Body format**
 
 ```
@@ -51,7 +51,7 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
 {{base_url}}/products/create
 ```
 
-**Content-Type:apllication/json**
+**Content-Type: apllication/json**
 **Body format**
 
 ```
@@ -96,7 +96,7 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
   {{base_url}}/products/update/{{product_Id}}
 ```
 
-**Content-Type:apllication/json**
+**Content-Type: apllication/json**
 **Body format**
 
 ```
