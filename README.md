@@ -35,11 +35,11 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
 
 ```
 {
-  "title": req.body.title,
-  "imgSrc": req.body.imgSrc,
-  "price": req.body.price,
-  "description": req.body.description,
-  "inStock": req.body.inStock,
+  "title": ,
+  "imgSrc": ,
+  "price":,
+  "description": ,
+  "inStock": 
   }
 ```
 
