@@ -12,6 +12,8 @@ const router = express.Router();
 const User = require('../models/user');
 
 
+//handling requests
+
 router.post('/registration', async (req, res) => {
 
     try {
@@ -57,6 +59,7 @@ router.post('/login', async (req, res) => {
 
 
 })
+
 
 
 module.exports = router

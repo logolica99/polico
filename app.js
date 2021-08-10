@@ -4,14 +4,12 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 
+//connecting to database
 const connectDB = require('./db/connect');
-
-//importing models
-const Product = require('./models/product');
-const User = require('./models/user');
 
 //importing routers
 const userRouter = require('./routes/users');
+const productsRouter = require('./routes/products');
 
 //parsing json
 app.use(express.json());
@@ -19,6 +17,7 @@ app.use(express.json());
 
 //routing
 app.use('/user',userRouter);
+app.use('/products',productsRouter);
 
 
 
