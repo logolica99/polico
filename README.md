@@ -11,7 +11,7 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
 ```
 
 **Content-Type: apllication/json**  \
-**Body format**
+**Body format:**
 
 ```
 {
@@ -34,7 +34,7 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
 ```
 
 **Content-Type: apllication/json**  \
-**Body format**
+**Body format:**
 
 ```
 {
@@ -52,7 +52,7 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
 ```
 
 **Content-Type: apllication/json**  \
-**Body format**
+**Body format:**
 
 ```
 {
@@ -97,7 +97,7 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
 ```
 
 **Content-Type: apllication/json**  \
-**Body format**
+**Body format:**
 
 ```
 {
