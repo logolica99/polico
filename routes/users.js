@@ -6,7 +6,8 @@ const jwt = require("jsonwebtoken")
 const express = require('express');
 const router = express.Router();
 
-
+//importing middlewares
+const authenticateToken = require('../middlewares/authenticateToken');
 
 //importing models
 const User = require('../models/user');
@@ -14,6 +15,7 @@ const User = require('../models/user');
 
 //handling requests
 
+// user registration
 router.post('/registration', async (req, res) => {
 
     try {
@@ -29,6 +31,7 @@ router.post('/registration', async (req, res) => {
     }
 })
 
+//user login
 router.post('/login', async (req, res) => {
     User.findOne({ username: req.body.username })
         .then(async result => {
@@ -58,6 +61,21 @@ router.post('/login', async (req, res) => {
         })
 
 
+})
+
+
+// get user data
+router.get('/:user_id',authenticateToken, async(req,res)=>{
+    User.find({_id:req.params.user_id}).select("-password")
+    .then(user_data=>{
+      
+        res.status(200).json(user_data)
+        
+    })
+    .catch(error=>{
+        console.log(error);
+        res.status(500).send("failed");
+    })
 })
 
 

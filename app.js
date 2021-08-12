@@ -21,9 +21,6 @@ app.use('/products',productsRouter);
 
 
 
-
-
-
 //starting server
 const port =process.env.PORT || 3000;
 

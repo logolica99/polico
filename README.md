@@ -9,8 +9,8 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
 ```
 {{base_url}}/user/registration
 ```
-
-**Content-Type: apllication/json**  \
+**Method:POST**  \
+**Content-Type: application/json**  \
 **Body format:**
 
 ```
@@ -32,8 +32,8 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
 ```
 {{base_url}}/user/login
 ```
-
-**Content-Type: apllication/json**  \
+**Method:POST**  \
+**Content-Type: application/json**  \
 **Body format:**
 
 ```
@@ -43,6 +43,17 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
 }
 ```
 
+
+## get user data
+
+
+**URL:**
+
+```
+{{base_url}}/user/{{user_id}}
+```
+**Method:GET**
+
 ## new Product
 
 **URL:**
@@ -50,8 +61,8 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
 ```
 {{base_url}}/products/create
 ```
-
-**Content-Type: apllication/json**  \
+**Method:POST**  \
+**Content-Type: application/json**  \
 **Body format:**
 
 ```
@@ -71,6 +82,7 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
 ```
   {{base_url}}/products/all
 ```
+**Method:GET**
 
 ## get single product by id
 
@@ -79,6 +91,8 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
 ```
   {{base_url}}/products/{{product_Id}}
 ```
+**Method:GET**
+
 
 ## get all the products by the owner
 
@@ -87,6 +101,7 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
 ```
   {{base_url}}/products/user/{{user_Id}}
 ```
+**Method:GET**
 
 ## update a product
 
@@ -96,7 +111,8 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
   {{base_url}}/products/update/{{product_Id}}
 ```
 
-**Content-Type: apllication/json**  \
+**Method:POST**  \
+**Content-Type: application/json**  \
 **Body format:**
 
 ```
@@ -108,7 +124,7 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
   "inStock":
   }
 ```
-**The method should be POST**
+
 
 
 ## delete a product
@@ -119,4 +135,4 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
   {{base_url}}/products/update/{{product_Id}}
 ```
 
-**The method should be DELETE**
+**Method:DELETE**  \
