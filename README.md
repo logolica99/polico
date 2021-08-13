@@ -54,6 +54,38 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
 ```
 **Method:GET**
 
+## update user data
+**URL:**
+
+
+```
+{{base_url}}/update
+```
+**Method:POST**  \
+**Content-Type: application/json**  \
+**Body format:**
+```
+{
+    "firstName":,
+    "lastName":,
+    "username":,
+    "password":,
+    "email":,
+    "phone":,
+    "university":
+}
+```
+
+## delete user data
+**URL:**
+
+
+```
+{{base_url}}/delete
+```
+**Method:DELETE**  \
+
+
 ## new Product
 
 **URL:**

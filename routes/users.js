@@ -65,17 +65,42 @@ router.post('/login', async (req, res) => {
 
 
 // get user data
-router.get('/:user_id',authenticateToken, async(req,res)=>{
-    User.find({_id:req.params.user_id}).select("-password")
-    .then(user_data=>{
-      
-        res.status(200).json(user_data)
-        
-    })
-    .catch(error=>{
+router.get('/:user_id', authenticateToken, async (req, res) => {
+    User.find({ _id: req.params.user_id }).select("-password")
+        .then(user_data => {
+
+            res.status(200).json(user_data)
+
+        })
+        .catch(error => {
+            console.log(error);
+            res.status(500).send("failed");
+        })
+})
+
+
+//update user data
+router.post('/update', authenticateToken, async (req, res) => {
+    try {
+        await User.updateOne({ _id: req.user.user_id }, { $set: req.body });
+     
+        return res.status(201).send("user profile updated successfully");
+
+    } catch (error) {
         console.log(error);
-        res.status(500).send("failed");
-    })
+        res.status(500).send("Failed");
+    }
+})
+
+//delete user data
+router.delete("/delete",authenticateToken,async(req,res)=>{
+    try{
+        await User.deleteOne({_id:req.user.user_id});
+        return res.status(201).send("user deleted successfully");
+    }catch(error){
+        console.log(error);
+        res.status(500).send("Failed");
+    }
 })
 
 
