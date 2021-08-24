@@ -22,7 +22,9 @@ router.post('/create', authenticateToken, async (req, res) => {
             'ownerId': req.user.user_id,
             'imgSrc': req.body.imgSrc,
             'price': req.body.price,
+
             'description': req.body.description,
+            'category':req.body.category,
             'inStock': req.body.inStock,
 
 
@@ -82,6 +84,21 @@ router.get('/user/:user_id', authenticateToken, async (req, res) => {
             res.status(500).send("Failed");
         });
 })
+
+
+//getting products by category
+
+router.get("/category/:category",authenticateToken,async(req,res)=>{
+
+    Product.find({ "category": req.params.category,"inStock":true}).sort([['updatedAt', -1]])
+        .then(result => res.status(200).json(result))
+        .catch(error => {
+            console.log(error);
+            res.status(500).send("Failed");
+        });
+})
+
+
 
 //updating a product 
 router.put('/update/:product_id', authenticateToken, async (req, res) => {

@@ -103,6 +103,7 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
   "imgSrc": ,
   "price":,
   "description": ,
+  "category:{"electronics","vehicles","pets","home_appliance","clothing","sports","books","stationary",},
   "inStock":
   }
 ```
@@ -133,7 +134,17 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
 ```
   {{base_url}}/products/user/{{user_Id}}
 ```
-**Method:GET**
+**Method:GET**  
+
+## product category if in stock
+{"electronics","vehicles","pets","home_appliance","clothing","sports","books","stationary",}
+**URL:**
+
+```
+  {{base_url}}/products/:category
+```
+
+**Method:GET**  
 
 ## update a product
 

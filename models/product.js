@@ -24,6 +24,10 @@ const productSchema = new Schema({
         required: true,
 
     },
+    category:{
+        type:String,
+        required:true,
+    },
     inStock: {
         type: Schema.Types.Boolean,
         required: true

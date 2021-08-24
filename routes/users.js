@@ -83,7 +83,7 @@ router.get('/:user_id', authenticateToken, async (req, res) => {
 router.post('/update', authenticateToken, async (req, res) => {
     try {
         await User.updateOne({ _id: req.user.user_id }, { $set: req.body });
-     
+
         return res.status(201).send("user profile updated successfully");
 
     } catch (error) {
@@ -93,11 +93,11 @@ router.post('/update', authenticateToken, async (req, res) => {
 })
 
 //delete user data
-router.delete("/delete",authenticateToken,async(req,res)=>{
-    try{
-        await User.deleteOne({_id:req.user.user_id});
+router.delete("/delete", authenticateToken, async (req, res) => {
+    try {
+        await User.deleteOne({ _id: req.user.user_id });
         return res.status(201).send("user deleted successfully");
-    }catch(error){
+    } catch (error) {
         console.log(error);
         res.status(500).send("Failed");
     }
@@ -106,3 +106,4 @@ router.delete("/delete",authenticateToken,async(req,res)=>{
 
 
 module.exports = router
+
