@@ -122,7 +122,7 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
 **URL:**
 
 ```
-  {{base_url}}/products/{{product_Id}}
+  {{base_url}}/products/single/{{product_Id}}
 ```
 **Method:GET**
 
@@ -146,10 +146,10 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
 
 **Method:GET**  
 
-## search for a product
+## search for a product with greater than and less than price
 **URL:**
 ```
-  {{base_url}}/products/search/:query_string
+  {{base_url}}/products/search/:query_string?gte={value}&lte={value}
 ```
 **Method:GET** 
 

@@ -24,7 +24,7 @@ router.post('/create', authenticateToken, async (req, res) => {
             'price': req.body.price,
 
             'description': req.body.description,
-            'category':req.body.category,
+            'category': req.body.category,
             'inStock': req.body.inStock,
 
 
@@ -60,7 +60,7 @@ router.get('/all', authenticateToken, async (req, res) => {
 
 // getting single product
 
-router.get('/:product_id', authenticateToken, async (req, res) => {
+router.get('/single/:product_id', authenticateToken, async (req, res) => {
 
 
     Product.find({ "_id": req.params.product_id })
@@ -88,9 +88,9 @@ router.get('/user/:user_id', authenticateToken, async (req, res) => {
 
 //getting products by category
 
-router.get("/category/:category",authenticateToken,async(req,res)=>{
+router.get("/category/:category", authenticateToken, async (req, res) => {
 
-    Product.find({ "category": req.params.category,"inStock":true}).sort([['updatedAt', -1]])
+    Product.find({ "category": req.params.category, "inStock": true }).sort([['updatedAt', -1]])
         .then(result => res.status(200).json(result))
         .catch(error => {
             console.log(error);
@@ -98,17 +98,30 @@ router.get("/category/:category",authenticateToken,async(req,res)=>{
         });
 })
 
-//searching for products
-router.get("/search/:query_string",authenticateToken,(req,res)=>{
-    
-    Product.find({"title":{ $regex: `${req.params.query_string}`,$options: 'mi' }}).sort([['updatedAt', -1]])
-    .then(result => res.status(200).json(result))
-    .catch(error => {
-        console.log(error);
-        res.status(500).send("Failed");
-    });
+//searching for products greater than or less than price
+router.get("/search/:query_string", authenticateToken, (req, res) => {
+    var gte = 0;
+    var lte = Infinity;
+    if (req.query.gte) {
+        gte = req.query.gte
+    }
+    if (req.query.lte) {
+        lte = req.query.lte
+    }
+   
+// 
+    Product.find({"title": { $regex: `${req.params.query_string}`, $options: 'mi' }, "price": { $gte: gte, $lte:lte } }).sort([['updatedAt', -1]])
+        .then(result => res.status(200).json(result))
+        .catch(error => {
+            console.log(error);
+            res.status(500).send("Failed");
+        });
 })
 
+// price filtering for products
+router.get('/price/', authenticateToken, (req, res) => {
+    Product.find({ "price": { $gte: req.params.gte, $lte: req.params.lte } })
+})
 
 
 //updating a product 
@@ -119,7 +132,7 @@ router.put('/update/:product_id', authenticateToken, async (req, res) => {
 
 
 
-        await Product.updateOne({ _id:req.params.product_id}, { $set: req.body });
+        await Product.updateOne({ _id: req.params.product_id }, { $set: req.body });
         return res.status(201).send("product updated successfully");
 
 
@@ -130,11 +143,11 @@ router.put('/update/:product_id', authenticateToken, async (req, res) => {
 })
 
 //deleting a product
-router.delete('/update/:product_id',authenticateToken,async(req,res)=>{
-    try{
-        await Product.deleteOne({_id:req.params.product_id})
+router.delete('/update/:product_id', authenticateToken, async (req, res) => {
+    try {
+        await Product.deleteOne({ _id: req.params.product_id })
         return res.status(201).send("product deleted successfully");
-    }catch(error){
+    } catch (error) {
         console.log(error);
         res.status(500).send("Failed");
     }
