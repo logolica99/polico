@@ -100,17 +100,10 @@ router.get("/category/:category", authenticateToken, async (req, res) => {
 
 //searching for products greater than or less than price
 router.get("/search/:query_string", authenticateToken, (req, res) => {
-    var gte = 0;
-    var lte = Infinity;
-    if (req.query.gte) {
-        gte = req.query.gte
-    }
-    if (req.query.lte) {
-        lte = req.query.lte
-    }
+  
    
 // 
-    Product.find({"title": { $regex: `${req.params.query_string}`, $options: 'mi' }, "price": { $gte: gte, $lte:lte } }).sort([['updatedAt', -1]])
+    Product.find({"title": { $regex: `${req.params.query_string}`, $options: 'mi' } }).sort([['updatedAt', -1]])
         .then(result => res.status(200).json(result))
         .catch(error => {
             console.log(error);
