@@ -98,6 +98,17 @@ router.get("/category/:category",authenticateToken,async(req,res)=>{
         });
 })
 
+//searching for products
+router.get("/search/:query_string",authenticateToken,(req,res)=>{
+    
+    Product.find({"title":{ $regex: `${req.params.query_string}`,$options: 'mi' }}).sort([['updatedAt', -1]])
+    .then(result => res.status(200).json(result))
+    .catch(error => {
+        console.log(error);
+        res.status(500).send("Failed");
+    });
+})
+
 
 
 //updating a product 

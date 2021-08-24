@@ -83,7 +83,7 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
 ```
 {{base_url}}/delete
 ```
-**Method:DELETE**  \
+**Method:DELETE**  
 
 
 ## new Product
@@ -146,6 +146,14 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
 
 **Method:GET**  
 
+## search for a product
+**URL:**
+```
+  {{base_url}}/products/search/:query_string
+```
+**Method:GET** 
+
+
 ## update a product
 
 **URL:**
@@ -178,4 +186,4 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
   {{base_url}}/products/update/{{product_Id}}
 ```
 
-**Method:DELETE**  \
+**Method:DELETE**  
