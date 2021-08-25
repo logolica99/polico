@@ -42,8 +42,9 @@ router.post('/create', authenticateToken, async (req, res) => {
 //getting all the products(new to old)
 
 router.get('/all', authenticateToken, async (req, res) => {
+    
     try {
-        products = await Product.find().sort([['updatedAt', -1]]);
+        products = await Product.find().sort([['updatedAt', -1]]).skip((req.query.pageNum-1)*10).limit(10);
         if (products.length > 0) {
 
 
@@ -90,7 +91,7 @@ router.get('/user/:user_id', authenticateToken, async (req, res) => {
 
 router.get("/category/:category", authenticateToken, async (req, res) => {
 
-    Product.find({ "category": req.params.category, "inStock": true }).sort([['updatedAt', -1]])
+    Product.find({ "category": req.params.category, "inStock": true }).skip((req.query.pageNum-1)*10).sort([['updatedAt', -1]])
         .then(result => res.status(200).json(result))
         .catch(error => {
             console.log(error);
@@ -100,10 +101,10 @@ router.get("/category/:category", authenticateToken, async (req, res) => {
 
 //searching for products greater than or less than price
 router.get("/search/:query_string", authenticateToken, (req, res) => {
-  
-   
-// 
-    Product.find({"title": { $regex: `${req.params.query_string}`, $options: 'mi' } }).sort([['updatedAt', -1]])
+
+
+    // 
+    Product.find({ "title": { $regex: `${req.params.query_string}`, $options: 'mi' } }).skip((req.query.pageNum-1)*10).sort([['updatedAt', -1]])
         .then(result => res.status(200).json(result))
         .catch(error => {
             console.log(error);
@@ -111,10 +112,9 @@ router.get("/search/:query_string", authenticateToken, (req, res) => {
         });
 })
 
-// price filtering for products
-router.get('/price/', authenticateToken, (req, res) => {
-    Product.find({ "price": { $gte: req.params.gte, $lte: req.params.lte } })
-})
+
+
+
 
 
 //updating a product 

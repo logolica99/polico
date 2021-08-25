@@ -110,10 +110,11 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
 
 ## get all products (new to old)
 
+will get 10 results per page
 **URL:**
 
 ```
-  {{base_url}}/products/all
+  {{base_url}}/products/all?pageNum={int}
 ```
 **Method:GET**
 
@@ -138,18 +139,20 @@ API for **polico** , an easy-to-use marketplace for students' second hand produc
 
 ## product category if in stock
 {"electronics","vehicles","pets","home_appliance","clothing","sports","books","stationary",}
+will return 10 results per page
 **URL:**
 
 ```
-  {{base_url}}/products/:category
+  {{base_url}}/products/:category?pageNum={int}
 ```
 
 **Method:GET**  
 
 ## search for a product 
+will return 10 results per page
 **URL:**
 ```
-  {{base_url}}/products/search/:query_string
+  {{base_url}}/products/search/:query_string?pageNum={int}
 ```
 **Method:GET** 
 
